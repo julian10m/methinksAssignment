@@ -29,6 +29,7 @@ def image_detail(request, id):
             new_comment = comment_form.save(commit=False)
             new_comment.image = img
             new_comment.save()
+            comment_form = CommentForm()
     else:
         comment_form = CommentForm()
     return render(request,
