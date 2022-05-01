@@ -21,6 +21,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('images/', include('image_handler.urls', namespace='imageHandler')),
+    path('api/', include('image_handler.api.urls', namespace='api')),
 ] 
 
 if settings.DEBUG:
