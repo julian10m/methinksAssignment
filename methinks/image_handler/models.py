@@ -17,6 +17,9 @@ class Image(models.Model):
     class Meta:
         ordering = ('-created',)
 
+    def __str__(self):
+        return f'{self.filename}'
+
 class Comment(models.Model):
     image = models.ForeignKey(Image, 
                              on_delete=models.CASCADE,
@@ -32,4 +35,4 @@ class Comment(models.Model):
         ordering = ('created',)
     
     def __str__(self):
-        return f'Comment by {self.name} on {self.image.filename}'
+        return f'Comment by {self.name} on {self.image}'
