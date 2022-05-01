@@ -1,0 +1,13 @@
+{% extends "image_handler/base.html" %}
+
+{% block title %}
+    {{ image.filename }}
+{% endblock %} 
+
+{% block content %}
+    <h2> {{ image.filename }}</h2>
+    <p>
+        ID: {{ image.pk }} - Created at {{ image.created }}
+    </p>
+    <img src="{{ image.image.url }}" width=250>
+{% endblock %}

@@ -1,5 +1,5 @@
+from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.shortcuts import render
 from .models import Image
 
 IMAGES_PER_PAGE = 5
@@ -17,3 +17,9 @@ def image_list(request):
     return render(request, 
                  'image_handler/list.html', 
                  {'images': images,})
+
+def image_detail(request, id):
+    img = get_object_or_404(Image, pk=id)
+    return render(request,
+                'image_handler/detail.html',
+                {'image': img,})
