@@ -1,0 +1,20 @@
+{% extends "image_handler/base.html" %}
+
+{% block title %}
+    List of Images
+{% endblock %} 
+
+{% block content %}
+    <h2>List of Images</h2>
+    {% for image in images %}
+        <h3>
+            <a href="">Image ID: {{ image.pk }} - {{ image.filename }}</a>
+        </h3>
+        <p>
+            Created {{ image.created }}
+        </p>
+    {% empty %}
+        No image has been uploaded yet.
+    {% endfor %} 
+    {% include "pagination.html" with page=images %}
+{% endblock %}
