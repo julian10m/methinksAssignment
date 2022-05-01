@@ -3,7 +3,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .forms import CommentForm
 from .models import Image
 
-IMAGES_PER_PAGE = 5
+IMAGES_PER_PAGE = 2
 
 def image_list(request):
     object_list = Image.objects.all()
