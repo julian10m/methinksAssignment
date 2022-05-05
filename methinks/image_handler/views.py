@@ -39,3 +39,12 @@ def image_detail(request, id):
                  'new_comment': new_comment,
                  'comment_form': comment_form,
                  })
+
+def test_vue(request, id):
+    img = get_object_or_404(Image, pk=id)
+    comment_form = CommentForm()
+    return render(request, 
+                 'image_handler/test.html',
+                  {'image': img,
+                   'comment_form': comment_form,
+                  })

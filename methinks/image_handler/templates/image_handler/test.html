@@ -1,0 +1,38 @@
+{% extends "image_handler/base.html" %}
+{% load static %}
+
+{% block title %}
+    Test
+{% endblock %} 
+
+{% block content %}
+    <h2> {{ image.filename }}</h2>
+    <p>
+        ID: {{ image.pk }} - Created at {{ image.created }}
+    </p>
+    <img src="{{ image.image.url }}" width=250>
+    <div id="app">
+        <h2>[[ comments.length ]] comment(s)</h2>
+            <div v-for="(comment, index) in comments">
+                <h3>Comment [[ ++index ]]</h3>
+                <p>By [[ comment.name ]] - [[ comment.created ]]</p>
+               <div style='white-space: pre;'>[[ comment.body ]]</div>  
+            </div>
+            {% if new_comment %}
+            <h2>Your comment has been added.</h2>
+        {% endif %}
+        <h2>Add a new comment.</h2>
+        <!-- <form method="post" id="my_form"> -->
+            {{ comment_form.as_p }}
+            {% csrf_token %}
+            <p><input type='submit' @click="registerComment()" value="Add comment"></p>
+        <!-- </form> -->
+    </div>
+{% endblock %}
+
+{% block js %}
+{{ image.pk|json_script:'image_id' }}
+<script src="{% static 'axios.js' %}"></script>
+<script src="{% static 'vue.js' %}"></script>
+<script src="{% static 'comments.js' %}"></script>
+{% endblock js %}
